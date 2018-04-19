@@ -14,7 +14,7 @@
 <body>
     <div id="app">
         <el-container>
-            <div class="my-header">
+            <!-- <div class="my-header">
             <el-header>
                 <el-row>
                     <el-col></el-col>
@@ -29,28 +29,46 @@
                     </el-col>
                 </el-row>
             </el-header>
-            </div>
+            </div> -->
 
             <el-main>
                 <el-row>
-                    <el-col :span="10" :offset="6">
+                    <el-col :span="6" :offset="8">
                     <el-card>
                         <el-form>
+                            <div class="my-heading"><h2>眼底图像标注系统</h2></div>
+                            <div class="my-heading"><p>请输入你的信息</p></div>
                             <div v-if="isLogin">
-                                <el-form-item><el-input placeholder="账户"></el-input></el-form-item>
+                                <el-form-item><el-input placeholder="账号"></el-input></el-form-item>
                                 <el-form-item><el-input type="password" placeholder="密码"></el-input></el-form-item>
-                                <el-form-item><el-button type="primary" @click="">登录</el-button></el-form-item>
+                                <el-form-item><el-button type="primary" @click="" style="display: block; width: 100%;">登录</el-button></el-form-item>
                             </div>
                             <div v-else>
+                                <div class="my-heading"><h4>注册</h4></div>
                                 <el-form-item><el-input placeholder="工号"></el-input></el-form-item>
-                                <el-form-item><el-input placeholder="账户"></el-input></el-form-item>
+                                <el-form-item><el-input placeholder="账号"></el-input></el-form-item>
                                 <el-form-item><el-input placeholder="邮箱"></el-input></el-form-item>
                                 <el-form-item><el-input type="password" placeholder="密码"></el-input></el-form-item>
                                 <el-form-item><el-input type="password" placeholder="确认密码"></el-input></el-form-item>
-                                <el-form-item><el-button type="primary" @click="">注册</el-button></el-form-item>
+                                <el-form-item>
+                                    <div>
+                                        <el-upload action="" style="display: block; width: 100%;">
+                                            <el-button style="display: block; width: 100%;"><i class="el-icon-upload"></i>上传照片</el-button>
+                                        </el-upload>
+                                    </div>
+                                </el-form-item>
+                                <el-form-item><el-button type="primary" @click="" style="display: block; width: 100%;">注册</el-button></el-form-item>
                             </div>
                         </el-form>
                     </el-card>
+                    <div class="my-heading">
+                        <div v-if="isLogin">
+                            <p>没有账号？<el-button type="text" @click="clickTab">注册</el-button></p>
+                        </div>
+                        <div v-else>
+                            <p>已有账号？<el-button type="text" @click="clickTab">登录</el-button></p>
+                        </div>
+                    </div>
                     </el-col>
                 </el-row>
             </el-main>
