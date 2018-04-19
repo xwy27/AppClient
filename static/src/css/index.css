@@ -24,6 +24,9 @@ h1:hover {
     /* border-bottom: 2px gray; */
     height: 40px;
 }
+.el-tabs__content {
+    visibility: hidden;
+}
 
 .my-header {
     height: auto;
@@ -34,4 +37,7 @@ h1:hover {
 }
 .my-button {
     width: 100%;
+}
+.my-operation {
+    float: right;
 }
