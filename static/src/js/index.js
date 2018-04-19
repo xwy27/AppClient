@@ -4,11 +4,16 @@ var app = new Vue({
         isLogin: true
     },
     methods: {
-        clickTab: function() {
-            this.isLogin = !this.isLogin;
-        },
+        // clickTab: function() {
+        //     this.isLogin = !this.isLogin;
+        // },
+        clickTab: test,
         login: function() {
             window.location.href = "./administrator/index.html";
         }
     }
 })
+
+function test() {
+    this.isLogin = !this.isLogin;
+}

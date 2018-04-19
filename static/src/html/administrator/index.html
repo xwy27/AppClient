@@ -60,15 +60,15 @@
                     </div>
 
                     <div v-if="currentPage === 'TaskList'">
-                        <el-row>
+                        <!-- <el-row>
                             <div class="my-operation">
                                 <el-button icon="el-icon-refresh" type="text">刷新</el-button>
                             </div>
-                        </el-row>
+                        </el-row> -->
     
                         <el-row>
                             <el-table :data="tasks" stripe @row-click="clickTask">
-                                <el-table-column type="selection" width="55"></el-table-column>
+                                <el-table-column width="55"></el-table-column>
                                 <el-table-column prop="name" label="名称" sortable></el-table-column>
                                 <el-table-column prop="status" label="状态" sortable></el-table-column>
                             </el-table>
@@ -76,20 +76,26 @@
                     </div>
 
                     <div v-if="currentPage === 'AccountList'">
-                        <el-row>
+                        <!-- <el-row>
                             <div class="my-operation">
                                 <el-button icon="el-icon-refresh" type="text">刷新</el-button>
                                 <el-button type="primary">修改权限</el-button>
                             </div>
-                        </el-row>
+                        </el-row> -->
     
                         <el-row>
                             <el-table :data="accounts" stripe @row-click="clickAccount">
-                                <el-table-column type="selection" width="55"></el-table-column>
+                                <el-table-column width="55"></el-table-column>
                                 <el-table-column prop="id" label="工号" sortable></el-table-column>
                                 <el-table-column prop="status" label="权限身份" sortable></el-table-column>
                                 <el-table-column prop="email" label="邮箱"></el-table-column>
                             </el-table>
+                            <el-dialog title="修改权限" :visible.sync="setAccountStatusDialogVisible" center>
+                                <span slot="footer" class="dialog-footer">
+                                    <el-button @click="centerDialogVisible = false">取 消</el-button>
+                                    <el-button type="primary" @click="setAccountStatus">确 定</el-button>
+                                </span>
+                            </el-dialog>
                         </el-row>
                     </div>
 

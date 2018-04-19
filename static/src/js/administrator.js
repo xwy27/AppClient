@@ -31,6 +31,13 @@ var app = new Vue({
         breadcrumb: ['图像列表'],
         currentPage: 'ImageList'
     },
+    created: function() {
+        this.$notify.info({
+            title: '通知',
+            message: '有 2 个新的注册申请'
+        });
+        // console.log('aaa');
+    },
     methods: {
         clickTab: function(tab, event) {
             // console.log(tab.$el.id.split('-')[1]);
@@ -53,7 +60,12 @@ var app = new Vue({
             this.currentPage = 'TaskInfo';
         },
         clickAccount: function(row, event, column) {
+            setAccountStatusDialogVisible = true;
+        },
+        setAccountStatus: function() {
             // ...
+            setAccountStatusDialogVisible = false;
         }
     }
 })
+
