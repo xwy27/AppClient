@@ -12,9 +12,14 @@
     font-family: roboto-regular, "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
+
 .el-upload {
     display: block;
     width: 100%;
+}
+.el-breadcrumb {
+    /* border-bottom: 2px gray; */
+    height: 40px;
 }
 
 .my-header {

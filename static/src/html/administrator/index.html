@@ -1,0 +1,66 @@
+<!-- 这是管理员的页面 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>眼底图像标注系统</title>
+    <script src="../../lib/vue.js"></script>
+
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <div class="my-header">
+            <el-header>
+                <el-row>
+                    <el-col></el-col>
+                    <el-col><h1>眼底图像标注系统</h1></el-col>
+                </el-row>
+                <el-row>
+                    <el-col>
+                    <el-tabs v-model="activeTab" @tab-click="clickTab">
+                        <el-tab-pane label="图像列表" name="ImageList">图像列表</el-tab-pane>
+                        <el-tab-pane label="任务列表" name="TaskList">任务列表</el-tab-pane>
+                        <el-tab-pane label="注册申请" name="RegisterList">注册申请</el-tab-pane>
+                        <el-tab-pane label="账户设置" name="Account">账户设置</el-tab-pane>
+                    </el-tabs>
+                    </el-col>
+                </el-row>
+            </el-header>
+            </div>
+
+            <el-main>
+                <el-card>
+                    <el-row><el-col>
+                        <el-breadcrumb separator="/">
+                            <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+                            <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+                            <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+                        </el-breadcrumb>
+                    </el-col></el-row>
+                
+                    <el-row>
+                    <!-- operation -->
+                    </el-row>
+
+                    <el-row>
+                        <el-table :data="images" stripe>
+                            <el-table-column type="selection" width="55"></el-table-column>
+                            <el-table-column prop="name" label="名称" sortable></el-table-column>
+                            <el-table-column prop="status" label="状态" sortable></el-table-column>
+                        </el-table>
+                    </el-row>
+                </el-card>
+            </el-main>
+
+            <el-footer></el-footer>
+        </el-container>
+    </div>
+</body>
+<link rel="stylesheet" href="../../css/index.css">
+<script src="../../js/administrator.js"></script>
+</html>
