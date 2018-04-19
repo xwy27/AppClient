@@ -17,6 +17,9 @@ var app = new Vue({
         clickTab: function(tab, event) {
             activeTab = tab.$el.innerText;
             console.log(activeTab);
+        },
+        goHome: function() {
+            window.location.href = "../index.html";
         }
     }
 })

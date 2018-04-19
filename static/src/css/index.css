@@ -12,6 +12,9 @@
     font-family: roboto-regular, "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
+h1:hover {
+    cursor: pointer;
+}
 
 .el-upload {
     display: block;
