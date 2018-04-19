@@ -1,0 +1,17 @@
+@font-face {
+    font-family: roboto-regular;
+    src: url(../../assets/fonts/Roboto-Regular.ttf)
+}
+
+@font-face {
+    font-family: roboto-medium;
+    src: url(../../assets/fonts/Roboto-Medium.ttf)
+}
+
+* {
+    font-family: roboto-regular, "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.my-header {
+    height: auto;
+}
