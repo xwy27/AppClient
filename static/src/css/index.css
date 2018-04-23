@@ -27,6 +27,10 @@ h1:hover {
 .el-tabs__content {
     visibility: hidden;
 }
+.el-pagination {
+    float: right;
+    margin-top: 20px;
+}
 
 .my-header {
     height: auto;
@@ -39,5 +43,5 @@ h1:hover {
     width: 100%;
 }
 .my-operation {
-    float: right;
+    /* float: right; */
 }

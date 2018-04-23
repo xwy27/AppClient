@@ -12,6 +12,10 @@ var app = new Vue({
             {name:'G1 image', status:'有分歧'},
             {name:'H1 image', status:'已完成'}
         ],
+        imagePageCurrent: 1,
+        imagePageSizes: [2, 10, 30, 50],
+        imagePageSize: 10,
+
         tasks: [
             {name:'A1 task', status:'进行中'},
             {name:'B1 task', status:'进行中'},
@@ -29,14 +33,18 @@ var app = new Vue({
             {id:'H8', status:'客人', email:'aaa@bb.com'},
         ],
         breadcrumb: ['图像列表'],
-        currentPage: 'ImageList'
+        currentPage: 'ImageList',
+        setAccountStatusDialogVisible: false,
+        setAccountStatusForm: {
+            accounts: [],
+            newStatus: ''
+        }
     },
     created: function() {
         this.$notify.info({
             title: '通知',
             message: '有 2 个新的注册申请'
         });
-        // console.log('aaa');
     },
     methods: {
         clickTab: function(tab, event) {
@@ -51,6 +59,7 @@ var app = new Vue({
         goHome: function() {
             window.location.href = "../index.html";
         },
+
         clickImage: function(row, event, column) {
             this.breadcrumb.push('图像详情');
             this.currentPage = 'ImageInfo';
@@ -60,11 +69,35 @@ var app = new Vue({
             this.currentPage = 'TaskInfo';
         },
         clickAccount: function(row, event, column) {
-            setAccountStatusDialogVisible = true;
+            this.setAccountStatusDialogVisible = true;
         },
         setAccountStatus: function() {
             // ...
-            setAccountStatusDialogVisible = false;
+            this.setAccountStatusDialogVisible = false;
+            this.setAccountStatusForm.newStatus = '';
+        },
+
+        getImages: function() {
+            var len = this.images.length;
+            if (this.imagePageSize >= len) {
+                return this.images;
+            } else {
+                var imagePages = [];
+                for(var i = 0; i < len; i += this.imagePageSize){
+                    if (i + this.imagePageSize >= len) {
+                        imagePages.push(this.images.slice(i));
+                    } else {
+                        imagePages.push(this.images.slice(i, i + this.imagePageSize));
+                    }
+                }
+                return imagePages[this.imagePageCurrent - 1]
+            }
+        },
+        changeImagePageSize: function(val) {
+            this.imagePageSize = val;
+        },
+        changeImagePageCurrent: function(val) {
+            this.imagePageCurrent = val;
         }
     }
 })

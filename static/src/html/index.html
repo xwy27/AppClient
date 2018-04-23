@@ -38,9 +38,9 @@
                         <el-form>
                             <div class="my-heading"><h2>眼底图像标注系统</h2></div>
                             <div class="my-heading"><p>请输入你的信息</p></div>
-                            <div v-if="isLogin">
-                                <el-form-item><el-input placeholder="账号"></el-input></el-form-item>
-                                <el-form-item><el-input type="password" placeholder="密码"></el-input></el-form-item>
+                            <div v-if="isLogin" :model="loginForm">
+                                <el-form-item><el-input placeholder="账号" v-model="loginForm.account"></el-input></el-form-item>
+                                <el-form-item><el-input type="password" placeholder="密码" v-model="loginForm.password"></el-input></el-form-item>
                                 <el-form-item><el-button type="primary" @click="login" style="display: block; width: 100%;">登录</el-button></el-form-item>
                             </div>
                             <div v-else>
@@ -79,4 +79,5 @@
 </body>
 <link rel="stylesheet" href="../css/index.css">
 <script src="../js/index.js"></script>
+<script src="../lib/jquery-3.3.1.js"></script>
 </html>
