@@ -38,6 +38,13 @@ var app = new Vue({
         setAccountStatusForm: {
             accounts: [],
             newStatus: ''
+        },
+        accountForm: {
+            ID: 'test',
+            account: 'test',
+            status: '管理员',
+            password: '',
+            emial: ''
         }
     },
     created: function() {
@@ -98,6 +105,9 @@ var app = new Vue({
         },
         changeImagePageCurrent: function(val) {
             this.imagePageCurrent = val;
+        },
+        changeAccountInfo: function() {
+            // ...
         }
     }
 })

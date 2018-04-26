@@ -105,14 +105,14 @@
                             <el-dialog title="修改权限" :visible.sync="setAccountStatusDialogVisible">
                                 <el-form :model="setAccountStatusForm">
                                     <el-form-item>
-                                        <el-row><rl-col>
+                                        <el-row><el-col>
                                         <el-select v-model="setAccountStatusForm.newStatus" placeholder="请选择权限">
                                         <el-option label="医生" value="doctor"></el-option>
                                         <el-option label="客人" value="guest"></el-option>
                                         <el-option label="无权限" value="none"></el-option>
                                         </el-select>
                                         <el-button type="primary" @click="setAccountStatus">确 定</el-button>
-                                        </rl-col></el-row>
+                                        </el-col></el-row>
                                     </el-form-item>
                                 </el-form>
                                 <!-- <span slot="footer" class="dialog-footer">
@@ -120,6 +120,31 @@
                                     <el-button type="primary" @click="setAccountStatus">确 定</el-button>
                                 </span> -->
                             </el-dialog>
+                        </el-row>
+                    </div>
+
+                    <div v-if="currentPage === 'Settings'">
+                        <el-row>
+                            <el-form :model="accountForm">
+                                <el-form-item label="ID">
+                                    <el-input v-model="accountForm.ID" :disabled="true" :placeholder="accountForm.ID"></el-input>
+                                </el-form-item>
+                                <el-form-item label="账号">
+                                    <el-input v-model="accountForm.account" :disabled="true" :placeholder="accountForm.account"></el-input>
+                                </el-form-item>
+                                <el-form-item label="权限">
+                                    <el-input v-model="accountForm.status" :disabled="true" :placeholder="accountForm.status"></el-input>
+                                </el-form-item>
+                                <el-form-item label="密码">
+                                    <el-input v-model="accountForm.password"></el-input>
+                                </el-form-item>
+                                <el-form-item label="邮件">
+                                    <el-input v-model="accountForm.email"></el-input>
+                                </el-form-item>
+                                <el-form-item>
+                                        <el-button type="primary" @click="changeAccountInfo">修改账户信息</el-button>
+                                </el-form-item>
+                            </el-form>
                         </el-row>
                     </div>
 
