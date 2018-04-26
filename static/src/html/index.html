@@ -14,22 +14,6 @@
 <body>
     <div id="app">
         <el-container>
-            <!-- <div class="my-header">
-            <el-header>
-                <el-row>
-                    <el-col></el-col>
-                    <el-col><h1>眼底图像标注系统</h1></el-col>
-                </el-row>
-                <el-row>
-                    <el-col>
-                    <el-tabs v-model="activeTab" @tab-click="clickTab">
-                        <el-tab-pane label="用户登录" name="login">用户登录</el-tab-pane>
-                        <el-tab-pane label="用户注册" name="register">用户注册</el-tab-pane>
-                    </el-tabs>
-                    </el-col>
-                </el-row>
-            </el-header>
-            </div> -->
 
             <el-main>
                 <el-row>
@@ -38,26 +22,34 @@
                         <el-form>
                             <div class="my-heading"><h2>眼底图像标注系统</h2></div>
                             <div class="my-heading"><p>请输入你的信息</p></div>
+                            
                             <div v-if="isLogin" :model="loginForm">
                                 <el-form-item><el-input placeholder="账号" v-model="loginForm.account"></el-input></el-form-item>
                                 <el-form-item><el-input type="password" placeholder="密码" v-model="loginForm.password"></el-input></el-form-item>
                                 <el-form-item><el-button type="primary" @click="login" style="display: block; width: 100%;">登录</el-button></el-form-item>
                             </div>
-                            <div v-else>
-                                <div class="my-heading"><h4>注册</h4></div>
-                                <el-form-item><el-input placeholder="工号"></el-input></el-form-item>
-                                <el-form-item><el-input placeholder="账号"></el-input></el-form-item>
-                                <el-form-item><el-input placeholder="邮箱"></el-input></el-form-item>
-                                <el-form-item><el-input type="password" placeholder="密码"></el-input></el-form-item>
+
+                            <div v-else :model="registerForm">
+                                <div style="margin-bottom: 20px;">
+                                    <div v-if="hasPhoto" class="my-box">
+                                    <div class="my-mask"><img :src="photoUrl" class="my-photo"></div>
+                                    </div>
+                                    <div v-else class="my-heading"><h4>注册</h4></div>
+                                </div>
+
+                                <el-form-item><el-input placeholder="工号" v-model="registerForm.id"></el-input></el-form-item>
+                                <el-form-item><el-input placeholder="账号" v-model="registerForm.account"></el-input></el-form-item>
+                                <el-form-item><el-input placeholder="邮箱" v-model="registerForm.email"></el-input></el-form-item>
+                                <el-form-item><el-input type="password" placeholder="密码" v-model="registerForm.password"></el-input></el-form-item>
                                 <el-form-item><el-input type="password" placeholder="确认密码"></el-input></el-form-item>
                                 <el-form-item>
                                     <div>
-                                        <el-upload action="" style="display: block; width: 100%;">
+                                        <el-upload ref="upload" action="" style="display: block; width: 100%;" :on-change="uploadPhoto" :show-file-list="false" :auto-upload="false">
                                             <el-button style="display: block; width: 100%;"><i class="el-icon-upload"></i>上传照片</el-button>
                                         </el-upload>
                                     </div>
                                 </el-form-item>
-                                <el-form-item><el-button type="primary" @click="" style="display: block; width: 100%;">注册</el-button></el-form-item>
+                                <el-form-item><el-button type="primary" @click="register" style="display: block; width: 100%;">注册</el-button></el-form-item>
                             </div>
                         </el-form>
                     </el-card>
